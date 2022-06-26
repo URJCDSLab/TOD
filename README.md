@@ -6,18 +6,20 @@ This repository contains the code used to evaluate the methods proposed in the p
 
 ## Usage example
 
+Example dataset obtained from [Outlier Detection DataSets (ODDS)](http://odds.cs.stonybrook.edu/breast-cancer-wisconsin-original-dataset/).
+
 ```
 from scipy.io import loadmat
 
 import numpy as np
 import pandas as pd
 
-from TOD_functions.methods import dis_matrices, TOD, sTOD
+from TOD_code.methods import dis_matrices, TOD, sTOD
 
 mat = loadmat('data/breastw.mat')
 dataset = mat["X"]
 labels = mat["y"]
-labels = labels.reshape(labels.shape[0],)
+labels = labels.reshape(labels.shape[0])
 
 th = 0.65
 k = range(245, 255)
@@ -29,7 +31,3 @@ pred_TOD = TOD(distmats, th)
 pred_sTOD = sTOD(distmats, th, z_size, n_iter)
 
 ```
-
-## Results example
-
-![Execution example](img/Figure_1.png)
